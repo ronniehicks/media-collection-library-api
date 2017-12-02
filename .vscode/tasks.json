@@ -1,20 +1,69 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "build-api",
-            "command": "dotnet build",
-            "type": "shell",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "presentation": {
-                "reveal": "silent"
-            },
-            "problemMatcher": "$msCompile"
-        }
-    ]
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build-api",
+      "command": "dotnet build",
+      "type": "shell",
+      "group": "build",
+      "presentation": {
+        "reveal": "silent"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build-web",
+      "group": "build",
+      "options": {
+        "cwd": "${workspaceRoot}/media-collection-library-web"
+      },
+      "presentation": {
+        "reveal": "silent"
+      },
+      "command": "npm run-script build",
+      "type": "shell",
+      "problemMatcher": "$tsc"
+    },
+    {
+      "label": "build-all",
+      "command": "echo 'All Built!'",
+      "type": "shell",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "silent",
+        "echo": false
+      },
+      "dependsOn": ["build-api", "build-web"]
+    },
+
+    // tests
+    {
+      "label": "test-api",
+      "command": "dotnet test",
+      "type": "shell",
+      "group": "test",
+      "presentation": {
+        "reveal": "silent"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "test-web",
+      "group": "test",
+      "options": {
+        "cwd": "${workspaceRoot}/media-collection-library-web"
+      },
+      "presentation": {
+        "reveal": "silent"
+      },
+      "command": "npm run-script test",
+      "type": "shell",
+      "problemMatcher": "$tsc"
+    }
+  ]
 }
