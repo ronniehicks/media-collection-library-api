@@ -5,7 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": ".NET Core Launch (web)",
+            "type": "chrome",
+            "request": "launch",
+            "name": "Client (Chrome)",
+            "url": "http://localhost:4200",
+            "webRoot": "${workspaceFolder}/media-collection-library-web",
+            "preLaunchTask": "start-web"
+        },
+        {
+            "name": "Server",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-api",
@@ -40,6 +48,15 @@
             "type": "coreclr",
             "request": "attach",
             "processId": "${command:pickProcess}"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Server/Client",
+            "configurations": [
+                "Server",
+                "Client (Chrome)"
+            ]
         }
     ]
 }
