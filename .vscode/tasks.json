@@ -22,7 +22,7 @@
             "presentation": {
                 "reveal": "silent"
             },
-            "command": "npm run-script build",
+            "command": "npm run build",
             "type": "shell",
             "problemMatcher": "$awesometsc"
         },
@@ -41,7 +41,8 @@
             "dependsOn": [
                 "build-api",
                 "build-web"
-            ]
+            ],
+            "problemMatcher": []
         },
         {
             "label": "test-api",
@@ -88,7 +89,7 @@
             "options": {
                 "cwd": "${workspaceFolder}/media-collection-library-web"
             },
-            "command": "npm start",
+            "command": "npm run start",
             "type": "shell",
             "problemMatcher": "$awesometsc",
             "isBackground": true
