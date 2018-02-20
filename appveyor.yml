@@ -1,0 +1,12 @@
+version: 0.0.{build}
+image: Visual Studio 2017
+build:
+  verbosity: minimal
+notifications:
+- provider: Email
+  to:
+  - hicks.ronnie@gmail.com
+  subject: MCL Build Failure
+  on_build_success: false
+  on_build_failure: true
+  on_build_status_changed: false
