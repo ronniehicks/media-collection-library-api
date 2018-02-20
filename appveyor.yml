@@ -1,5 +1,8 @@
 version: 0.0.{build}
 image: Visual Studio 2017
+install:
+- cmd: >-
+    dotnet restore
 build:
   verbosity: minimal
 notifications:
